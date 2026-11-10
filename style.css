@@ -1,0 +1,455 @@
+/* Configuração geral e fonte */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    
+    background-image: url('fundo-meu-site.avif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    text-align: center;
+}
+
+/* Camada escura de fundo */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: -1;
+}
+
+/* Estilo do Botão das Três Barrinhas (Hambúrguer) */
+#menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 30px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#menu-btn span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 3px;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+#menu-btn:hover span {
+    background-color: #ff1801;
+}
+
+/* Estilo do Menu Lateral (Escondido por padrão) */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Escondido fora da tela à esquerda */
+    width: 250px;
+    height: 100%;
+    background-color: rgba(15, 15, 15, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+    z-index: 999;
+    padding-top: 80px;
+    border-right: 2px solid #ff1801;
+}
+
+/* Classe ativa para mostrar o menu via JavaScript */
+#sidebar.ativo {
+    left: 0;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+#sidebar ul li a {
+    display: block;
+    padding: 15px 25px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    transition: 0.2s;
+    border-left: 4px solid transparent;
+}
+
+#sidebar ul li a:hover {
+    background-color: rgba(255, 24, 1, 0.15);
+    color: #ff1801;
+    border-left: 4px solid #ff1801;
+}
+
+/* Estilo do Topo (Bem-vindo a VRA) */
+header {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 3rem 1.5rem;
+    backdrop-filter: blur(4px);
+    border-bottom: 3px solid #ff1801;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+header p {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilo da Seção "Sobre a liga" */
+main {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+section {
+    max-width: 700px;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+section h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 0;
+    color: #ffffff;
+    border-bottom: 2px solid #ff1801;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #d1d1d1;
+    margin: 20px 0 0 0;
+}
+/* Estilos para o Card do Campeonato */
+.container-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.campeonato-card {
+    text-align: left;
+}
+
+.tag-categoria {
+    display: inline-block;
+    background-color: #ff1801;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Barra de Progresso */
+.progresso-container {
+    margin: 20px 0 25px 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progresso-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #cccccc;
+}
+
+.progresso-info strong {
+    color: #ff1801;
+}
+
+.barra-fundo {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    height: 100%;
+    background: linear-gradient(90deg, #ff1801, #ff5722);
+    border-radius: 5px;
+    transition: width 0.5s ease;
+}
+
+/* Blocos de Etapas */
+.etapas-bloco {
+    margin-top: 20px;
+}
+
+.etapas-bloco h3 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.etapas-bloco h3.concluido {
+    color: #4CAF50;
+}
+
+.etapas-bloco h3.pendente {
+    color: #ff9800;
+}
+
+.etapas-bloco ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.etapas-bloco ul li {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 5px;
+    border-radius: 4px;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.etapas-bloco ul li .data {
+    color: #ff1801;
+    font-weight: 900;
+}
+/* Substitua ou adicione estas regras no final do seu style.css */
+
+/* Classes para controlar a exibição das abas */
+.pagina-secao {
+    max-width: 700px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Oculta a secção por padrão */
+.pagina-secao.oculta {
+    display: none;
+}
+
+/* Mostra a secção ativa */
+.pagina-secao.ativa {
+    display: block;
+}
+
+/* Ajustes visuais mantidos para os cards */
+.container-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 1rem;
+}
+
+.tag-categoria {
+    display: inline-block;
+    background-color: #ff1801;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.progresso-container {
+    margin: 20px 0 25px 0;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progresso-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    color: #cccccc;
+}
+
+.progresso-info strong {
+    color: #ff1801;
+}
+
+.barra-fundo {
+    width: 100%;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.barra-preenchida {
+    height: 100%;
+    background: linear-gradient(90deg, #ff1801, #ff5722);
+    border-radius: 5px;
+}
+
+.etapas-bloco {
+    margin-top: 20px;
+}
+
+.etapas-bloco h3 {
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.etapas-bloco h3.concluido {
+    color: #4CAF50;
+}
+
+.etapas-bloco h3.pendente {
+    color: #ff9800;
+}
+
+.etapas-bloco ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.etapas-bloco ul li {
+    font-size: 1rem;
+    font-weight: 700;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 5px;
+    border-radius: 4px;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.etapas-bloco ul li .data {
+    color: #ff1801;
+    font-weight: 900;
+}
+
+.pagina-secao h2 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-top: 0;
+    color: #ffffff;
+    border-bottom: 2px solid #ff1801;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.pagina-secao p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: #d1d1d1;
+    margin: 20px 0 0 0;
+}
+/* Estilo para mensagens de aviso em branco/vazio */
+.aviso-vazio {
+    text-align: center;
+    font-style: italic;
+    color: #a0a0a0;
+    margin-top: 30px !important;
+    font-size: 1.2rem !important;
+}
+/* Estilos do Bloco do TikTok */
+.tiktok-box {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.tiktok-box span {
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tiktok-link {
+    display: inline-block;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid #ff1801;
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.tiktok-link:hover {
+    background-color: #ff1801;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 24, 1, 0.5);
+    transform: translateY(-2px);
+}
